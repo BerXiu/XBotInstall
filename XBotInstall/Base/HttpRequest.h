@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-typedef void CallBack;
+
 @interface HttpRequest : NSObject
 
-+ (void)x_getRequestWithTarget:(id)target callBack:(SEL)callBack;
++ (void)requestWithPath:(NSString *)path target:(id)target callBack:(SEL)callBack;
 
 @end

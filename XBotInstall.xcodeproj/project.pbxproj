@@ -16,7 +16,12 @@
 		4637FCC31D5DAB9F002E6278 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4637FCC21D5DAB9F002E6278 /* Assets.xcassets */; };
 		4637FCC61D5DAB9F002E6278 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4637FCC41D5DAB9F002E6278 /* LaunchScreen.storyboard */; };
 		466D594C1D618F4F00488C38 /* BotsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D594B1D618F4F00488C38 /* BotsViewController.m */; };
-		46DBACAF1D5DAE480082E1B0 /* BotsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DBACAE1D5DAE480082E1B0 /* BotsAPI.m */; };
+		466D59521D61948600488C38 /* HttpResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D59511D61948600488C38 /* HttpResult.m */; };
+		466D59551D619BD500488C38 /* BotInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D59541D619BD500488C38 /* BotInfo.m */; };
+		466D59591D61BD9F00488C38 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D59581D61BD9F00488C38 /* UIViewController+HUD.m */; };
+		466D595C1D61C07300488C38 /* BotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D595B1D61C07300488C38 /* BotCell.m */; };
+		466D595F1D61D66200488C38 /* AFNetworking+Center.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D595E1D61D66200488C38 /* AFNetworking+Center.m */; };
+		466D59621D61D78A00488C38 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D59611D61D78A00488C38 /* Configuration.m */; };
 		46DBACB41D5DB5D10082E1B0 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DBACB31D5DB5D10082E1B0 /* HttpRequest.m */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +41,18 @@
 		4637FCC71D5DAB9F002E6278 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		466D594A1D618F4F00488C38 /* BotsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BotsViewController.h; path = Main/BotsViewController.h; sourceTree = "<group>"; };
 		466D594B1D618F4F00488C38 /* BotsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BotsViewController.m; path = Main/BotsViewController.m; sourceTree = "<group>"; };
-		46DBACAD1D5DAE480082E1B0 /* BotsAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BotsAPI.h; path = Base/BotsAPI.h; sourceTree = "<group>"; };
-		46DBACAE1D5DAE480082E1B0 /* BotsAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BotsAPI.m; path = Base/BotsAPI.m; sourceTree = "<group>"; };
+		466D59501D61948600488C38 /* HttpResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpResult.h; path = Base/HttpResult.h; sourceTree = "<group>"; };
+		466D59511D61948600488C38 /* HttpResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpResult.m; path = Base/HttpResult.m; sourceTree = "<group>"; };
+		466D59531D619BD500488C38 /* BotInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BotInfo.h; path = Main/Base/BotInfo.h; sourceTree = "<group>"; };
+		466D59541D619BD500488C38 /* BotInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BotInfo.m; path = Main/Base/BotInfo.m; sourceTree = "<group>"; };
+		466D59571D61BD9F00488C38 /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
+		466D59581D61BD9F00488C38 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
+		466D595A1D61C07300488C38 /* BotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BotCell.h; path = Main/Base/BotCell.h; sourceTree = "<group>"; };
+		466D595B1D61C07300488C38 /* BotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BotCell.m; path = Main/Base/BotCell.m; sourceTree = "<group>"; };
+		466D595D1D61D66200488C38 /* AFNetworking+Center.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AFNetworking+Center.h"; path = "Base/AFNetworking+Center.h"; sourceTree = "<group>"; };
+		466D595E1D61D66200488C38 /* AFNetworking+Center.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AFNetworking+Center.m"; path = "Base/AFNetworking+Center.m"; sourceTree = "<group>"; };
+		466D59601D61D78A00488C38 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Configuration.h; path = Base/Configuration.h; sourceTree = "<group>"; };
+		466D59611D61D78A00488C38 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Configuration.m; path = Base/Configuration.m; sourceTree = "<group>"; };
 		46DBACB21D5DB5D10082E1B0 /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpRequest.h; path = Base/HttpRequest.h; sourceTree = "<group>"; };
 		46DBACB31D5DB5D10082E1B0 /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpRequest.m; path = Base/HttpRequest.m; sourceTree = "<group>"; };
 		82F6D119E6786C8134DB5A18 /* Pods-XBotInstall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XBotInstall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XBotInstall/Pods-XBotInstall.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,15 +113,32 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		466D59561D619BD900488C38 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				466D59531D619BD500488C38 /* BotInfo.h */,
+				466D59541D619BD500488C38 /* BotInfo.m */,
+				466D595A1D61C07300488C38 /* BotCell.h */,
+				466D595B1D61C07300488C38 /* BotCell.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
 		46DBACB01D5DAE4C0082E1B0 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				46DBACAD1D5DAE480082E1B0 /* BotsAPI.h */,
-				46DBACAE1D5DAE480082E1B0 /* BotsAPI.m */,
+				466D59601D61D78A00488C38 /* Configuration.h */,
+				466D59611D61D78A00488C38 /* Configuration.m */,
+				466D59571D61BD9F00488C38 /* UIViewController+HUD.h */,
+				466D59581D61BD9F00488C38 /* UIViewController+HUD.m */,
 				46DBACB21D5DB5D10082E1B0 /* HttpRequest.h */,
 				46DBACB31D5DB5D10082E1B0 /* HttpRequest.m */,
+				466D59501D61948600488C38 /* HttpResult.h */,
+				466D59511D61948600488C38 /* HttpResult.m */,
 				46163E7B1D615795006192F4 /* AFURLSessionManagerExtend.h */,
 				46163E7C1D615795006192F4 /* AFURLSessionManagerExtend.m */,
+				466D595D1D61D66200488C38 /* AFNetworking+Center.h */,
+				466D595E1D61D66200488C38 /* AFNetworking+Center.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -114,6 +146,7 @@
 		46DBACB11D5DB43B0082E1B0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				466D59561D619BD900488C38 /* Base */,
 				466D594A1D618F4F00488C38 /* BotsViewController.h */,
 				466D594B1D618F4F00488C38 /* BotsViewController.m */,
 			);
@@ -258,12 +291,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				466D59591D61BD9F00488C38 /* UIViewController+HUD.m in Sources */,
+				466D59551D619BD500488C38 /* BotInfo.m in Sources */,
 				4637FCC11D5DAB9F002E6278 /* XBotInstall.xcdatamodeld in Sources */,
 				46DBACB41D5DB5D10082E1B0 /* HttpRequest.m in Sources */,
-				46DBACAF1D5DAE480082E1B0 /* BotsAPI.m in Sources */,
 				46163E7D1D615795006192F4 /* AFURLSessionManagerExtend.m in Sources */,
+				466D595C1D61C07300488C38 /* BotCell.m in Sources */,
+				466D595F1D61D66200488C38 /* AFNetworking+Center.m in Sources */,
 				4637FCB81D5DAB9F002E6278 /* AppDelegate.m in Sources */,
 				466D594C1D618F4F00488C38 /* BotsViewController.m in Sources */,
+				466D59621D61D78A00488C38 /* Configuration.m in Sources */,
+				466D59521D61948600488C38 /* HttpResult.m in Sources */,
 				4637FCB51D5DAB9F002E6278 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +419,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Chopsticks Information Technology(GZ). Co. Ltd (8E7M52835U)";
 				INFOPLIST_FILE = XBotInstall/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Xiu.XBotInstall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -394,6 +433,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Chopsticks Information Technology(GZ). Co. Ltd (8E7M52835U)";
 				INFOPLIST_FILE = XBotInstall/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Xiu.XBotInstall;
 				PRODUCT_NAME = "$(TARGET_NAME)";

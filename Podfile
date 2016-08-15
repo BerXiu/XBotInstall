@@ -6,5 +6,7 @@ target 'XBotInstall' do
 
 pod 'AFNetworking'	# Http网络请求
 pod 'SVProgressHUD'     # 等待指示
+pod 'pop'
+pod 'SSObject', '1.4.4'
 
 end 

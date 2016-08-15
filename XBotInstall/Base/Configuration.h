@@ -1,19 +1,16 @@
 //
-//  BotsAPI.h
+//  Configuration.h
 //  XBotInstall
 //
-//  Created by Xiu on 12/8/16.
+//  Created by Xiu on 15/8/16.
 //  Copyright © 2016年 Xiu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-
+/// 获取Bot列表
 FOUNDATION_EXPORT NSString * const BotsAPIHost;
 
-FOUNDATION_EXPORT NSString * const BotsAPIBots;
-
-
-@interface BotsAPI : NSObject
+@interface Configuration : NSObject
 
 @end

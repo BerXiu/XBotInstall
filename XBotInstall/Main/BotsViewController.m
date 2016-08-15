@@ -8,8 +8,16 @@
 
 #import "BotsViewController.h"
 #import "HttpRequest.h"
+#import "HttpResult.h"
+#import "BotInfo.h"
+#import "UIViewController+HUD.h"
+#import "BotCell.h"
 
-@interface BotsViewController ()
+@interface BotsViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) BotInfo * info;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -17,16 +25,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [HttpRequest x_getRequestWithTarget:self callBack:@selector(info)];
+    [self HUDshow];
+    self.title = @"Bots";
+    [HttpRequest x_getRequestWithTarget:self callBack:@selector(info:)];
 }
 
--(void)info {
+-(void)info:(HttpResult *)result {
+    if (result.isSuccess) {
+        NSLog(@"%@",result.result);
+        self.info = [BotInfo objectWithDictionary:result.result];
+        [self HUDdismiss];
+        [self.tableView reloadData];
+        return ;
+    }
     
+    [self HUDshowErrorWithStatus:result.message];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return  self.info.results.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    BotCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if (!cell) {
+        cell = [[BotCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    }
+    ResultsInfo *info = self.info.results[indexPath.row];
+    cell.textLabel.text = info.name;
+    return cell;
 }
 
 /*

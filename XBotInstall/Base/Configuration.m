@@ -1,17 +1,16 @@
 //
-//  BotsAPI.m
+//  Configuration.m
 //  XBotInstall
 //
-//  Created by Xiu on 12/8/16.
+//  Created by Xiu on 15/8/16.
 //  Copyright © 2016年 Xiu. All rights reserved.
 //
 
-#import "BotsAPI.h"
+#import "Configuration.h"
 
+/// 获取Bot列表
 NSString * const BotsAPIHost = @"https://xiu-mac.local:20343/api/bots";
 
-//NSString * const BotsAPIBots = [NSString stringWithFormat:@""]
-
-@implementation BotsAPI
+@implementation Configuration
 
 @end
