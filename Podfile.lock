@@ -14,18 +14,31 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - NSObjectExtend (1.8.1):
+    - NSObjectExtend/All (= 1.8.1)
+  - NSObjectExtend/All (1.8.1):
+    - NSObjectExtend/Core
+    - NSObjectExtend/CoreLocation
+    - NSObjectExtend/UIKit
+  - NSObjectExtend/Core (1.8.1)
+  - NSObjectExtend/CoreLocation (1.8.1):
+    - NSObjectExtend/Core
+  - NSObjectExtend/UIKit (1.8.1):
+    - NSObjectExtend/Core
   - pop (1.0.9)
   - SSObject (1.4.4)
   - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
   - AFNetworking
+  - NSObjectExtend
   - pop
   - SSObject (= 1.4.4)
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  NSObjectExtend: cf77da3b288c26bd695584bada8f891e0cddad18
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SSObject: b0ca2da20f0a1526db7e2199ac91cd0eed977391
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4

@@ -12,6 +12,9 @@
 #import "BotInfo.h"
 #import "UIViewController+HUD.h"
 #import "BotCell.h"
+#import "AFNetworking+Center.h"
+#import "IntegrationsViewController.h"
+
 
 @interface BotsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -25,14 +28,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self HUDshow];
     self.title = @"Bots";
-    [HttpRequest x_getRequestWithTarget:self callBack:@selector(info:)];
+    [self refresh];
 }
 
--(void)info:(HttpResult *)result {
+- (void)refresh {
+    [self HUDshow];
+    [AFNetworking_Center x_getRequestBotsWithTarget:self callBack:@selector(info:)];
+}
+
+- (void)info:(HttpResult *)result {
     if (result.isSuccess) {
-        NSLog(@"%@",result.result);
         self.info = [BotInfo objectWithDictionary:result.result];
         [self HUDdismiss];
         [self.tableView reloadData];
@@ -42,6 +48,9 @@
     [self HUDshowErrorWithStatus:result.message];
 }
 
+
+
+#pragma mark -Navigation
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return  self.info.results.count;
 }
@@ -56,14 +65,19 @@
     return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self performSegueWithIdentifier:@"push" sender:self.info.results[indexPath.row]];
 }
-*/
+
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    IntegrationsViewController * integrations = (IntegrationsViewController *)segue.destinationViewController;
+    if (integrations) {
+        integrations.integrations = sender;
+    }
+}
+
 
 @end

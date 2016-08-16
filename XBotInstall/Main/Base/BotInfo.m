@@ -22,4 +22,5 @@
 
 @implementation ResultsInfo
 
+
 @end

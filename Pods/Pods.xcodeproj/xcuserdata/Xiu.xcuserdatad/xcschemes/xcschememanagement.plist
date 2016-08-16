@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>NSObjectExtend.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-XBotInstall.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>25467E6DCDB1A39698D177ED9E5E6A70</key>
+		<key>0A48910BFBD42D418C0DE94E31F31DB4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3493B5E6DB6E090FAEE890833EBE9D7E</key>
+		<key>3D61D33471D695B6C52A1C01EC3BC0B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6DEF3CA1CA273164224CCC4EBCA1537C</key>
+		<key>59901D6406CBD1C1D6775F1CC66AEB74</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>62DAAD739E57EEF01F46DE61B03E893B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8B8D2E7EDC288035892C1809310FBD0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>928353533005A4198EBDA5B700D37B64</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BAEDF44805725CF4094CA36E69D07EE7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

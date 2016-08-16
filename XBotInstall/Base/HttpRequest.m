@@ -26,11 +26,10 @@
 
 
 + (void)requestWithPath:(NSString *)path target:(id)target callBack:(SEL)callBack {
-    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManagerExtend *manager = [[AFURLSessionManagerExtend alloc]initWithSessionConfiguration:configuration];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:BotsAPIHost]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:path]];
     
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         

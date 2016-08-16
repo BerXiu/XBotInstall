@@ -18,8 +18,8 @@
     [HttpRequest requestWithPath:BotsAPIHost target:target callBack:callBack];
 }
 
-+ (void)x_getRequestIntegrationsTarget:(id)target callBack:(SEL)callBack {
-    
++ (void)x_getRequestIntegrationsIDs:(NSString *)ids last:(NSInteger)last Target:(id)target callBack:(SEL)callBack {
+    [HttpRequest requestWithPath:[NSString stringWithFormat:@"%@/%@/integrations?last=%ld", BotsAPIHost, ids, last] target:target callBack:callBack];
 }
 
 @end

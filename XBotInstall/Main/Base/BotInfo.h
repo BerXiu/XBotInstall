@@ -10,7 +10,9 @@
 
 @class ResultsInfo;
 @class ConfigurationInfo;
+@class IntegrationsInfo;
 
+#pragma mark - Bot列表
 @interface BotInfo : SSObject
 
 @property (nonatomic, readonly) NSInteger  count;
@@ -21,7 +23,7 @@
 
 
 
-
+#pragma mark - Bot信息
 @interface ResultsInfo: SSObject
 
 @property (nonatomic, readonly) NSString * name;
@@ -30,13 +32,7 @@
 
 @property (nonatomic, readonly) NSInteger  type;
 
-@property (nonatomic, readonly) NSDictionary * configuration;
+@property (nonatomic, readonly) NSString * _id;
 
 @end
 
-
-
-@interface ConfigurationInfo: SSObject
-
-
-@end

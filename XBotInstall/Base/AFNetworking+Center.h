@@ -18,5 +18,5 @@
 /**
  *  请求集成列表
  */
-+ (void)x_getRequestIntegrationsTarget:(id)target callBack:(SEL)callBack;
++ (void)x_getRequestIntegrationsIDs:(NSString *)ids last:(NSInteger)last Target:(id)target callBack:(SEL)callBack;
 @end
