@@ -15,11 +15,15 @@
 
 + (void)x_getRequestBotsWithTarget:(id)target callBack:(SEL)callBack {
     
-    [HttpRequest requestWithPath:BotsAPIHost target:target callBack:callBack];
+    [HttpRequest requestWithPath:[NSString stringWithFormat:@"%@/bots",BotsAPIHost] target:target callBack:callBack];
 }
 
 + (void)x_getRequestIntegrationsIDs:(NSString *)ids last:(NSInteger)last Target:(id)target callBack:(SEL)callBack {
-    [HttpRequest requestWithPath:[NSString stringWithFormat:@"%@/%@/integrations?last=%ld", BotsAPIHost, ids, last] target:target callBack:callBack];
+    [HttpRequest requestWithPath:[NSString stringWithFormat:@"%@/bots/%@/integrations?last=%ld", BotsAPIHost, ids, last] target:target callBack:callBack];
+}
+
++ (void)x_getRequestCommitIDs:(NSString *)ids target:(id)target callBack:(SEL)callBack {
+    [HttpRequest requestWithPath:[NSString stringWithFormat:@"%@/integrations/%@/commits", BotsAPIHost,ids] target:target callBack:callBack];
 }
 
 @end

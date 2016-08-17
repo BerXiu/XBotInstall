@@ -9,7 +9,7 @@
 #import "Configuration.h"
 
 /// 获取Bot列表
-NSString * const BotsAPIHost = @"https://xiu-mac.local:20343/api/bots";
+NSString * const BotsAPIHost = @"https://xiu-mac.local:20343/api";
 
 @implementation Configuration
 

@@ -13,6 +13,7 @@
 #import "HttpResult.h"
 #import "IntegrationsInfo.h"
 #import <NSObjectExtend/NSDate+extend.h>
+#import "InstallerViewController.h"
 
 @interface IntegrationsViewController ()
 
@@ -38,7 +39,6 @@
 }
 
 - (void)result:(HttpResult *)result {
-    NSLog(@"%@",result.result);
     if (result.isSuccess) {
         
         self.info = [IntegrationsInfo objectWithDictionary:result.result];
@@ -47,11 +47,6 @@
     [self HUDdismiss];
 
     
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -100,20 +95,21 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-    
+    [self performSegueWithIdentifier:@"push" sender:self.info.results[indexPath.section]];
 }
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    InstallerViewController *vc = segue.destinationViewController;
+    if (vc) {
+        vc.integrationsResultsInfo = sender;;
+    }
 }
-*/
+
 
 @end

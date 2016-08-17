@@ -25,6 +25,8 @@
 		466D59651D62E91200488C38 /* IntegrationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D59641D62E91200488C38 /* IntegrationsViewController.m */; };
 		466D596B1D62FD1600488C38 /* IntegrationsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D596A1D62FD1600488C38 /* IntegrationsInfo.m */; };
 		466D596E1D6331FE00488C38 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D596D1D6331FE00488C38 /* DetailCell.m */; };
+		466D59741D6445D200488C38 /* InstallerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D59731D6445D200488C38 /* InstallerViewController.m */; };
+		466D59771D644DD100488C38 /* CommitsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 466D59761D644DD100488C38 /* CommitsInfo.m */; };
 		46DBACB41D5DB5D10082E1B0 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DBACB31D5DB5D10082E1B0 /* HttpRequest.m */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,10 @@
 		466D596A1D62FD1600488C38 /* IntegrationsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IntegrationsInfo.m; path = Main/Base/IntegrationsInfo.m; sourceTree = "<group>"; };
 		466D596C1D6331FE00488C38 /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailCell.h; path = Main/Base/DetailCell.h; sourceTree = "<group>"; };
 		466D596D1D6331FE00488C38 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailCell.m; path = Main/Base/DetailCell.m; sourceTree = "<group>"; };
+		466D59721D6445D200488C38 /* InstallerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstallerViewController.h; path = Main/InstallerViewController.h; sourceTree = "<group>"; };
+		466D59731D6445D200488C38 /* InstallerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstallerViewController.m; path = Main/InstallerViewController.m; sourceTree = "<group>"; };
+		466D59751D644DD100488C38 /* CommitsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommitsInfo.h; path = Base/CommitsInfo.h; sourceTree = "<group>"; };
+		466D59761D644DD100488C38 /* CommitsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommitsInfo.m; path = Base/CommitsInfo.m; sourceTree = "<group>"; };
 		46DBACB21D5DB5D10082E1B0 /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpRequest.h; path = Base/HttpRequest.h; sourceTree = "<group>"; };
 		46DBACB31D5DB5D10082E1B0 /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpRequest.m; path = Base/HttpRequest.m; sourceTree = "<group>"; };
 		82F6D119E6786C8134DB5A18 /* Pods-XBotInstall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XBotInstall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XBotInstall/Pods-XBotInstall.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +139,8 @@
 				466D596A1D62FD1600488C38 /* IntegrationsInfo.m */,
 				466D596C1D6331FE00488C38 /* DetailCell.h */,
 				466D596D1D6331FE00488C38 /* DetailCell.m */,
+				466D59751D644DD100488C38 /* CommitsInfo.h */,
+				466D59761D644DD100488C38 /* CommitsInfo.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -164,6 +172,8 @@
 				466D594B1D618F4F00488C38 /* BotsViewController.m */,
 				466D59631D62E91200488C38 /* IntegrationsViewController.h */,
 				466D59641D62E91200488C38 /* IntegrationsViewController.m */,
+				466D59721D6445D200488C38 /* InstallerViewController.h */,
+				466D59731D6445D200488C38 /* InstallerViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -307,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				466D596B1D62FD1600488C38 /* IntegrationsInfo.m in Sources */,
+				466D59741D6445D200488C38 /* InstallerViewController.m in Sources */,
 				466D59591D61BD9F00488C38 /* UIViewController+HUD.m in Sources */,
 				466D59551D619BD500488C38 /* BotInfo.m in Sources */,
 				4637FCC11D5DAB9F002E6278 /* XBotInstall.xcdatamodeld in Sources */,
@@ -317,6 +328,7 @@
 				4637FCB81D5DAB9F002E6278 /* AppDelegate.m in Sources */,
 				466D596E1D6331FE00488C38 /* DetailCell.m in Sources */,
 				466D594C1D618F4F00488C38 /* BotsViewController.m in Sources */,
+				466D59771D644DD100488C38 /* CommitsInfo.m in Sources */,
 				466D59621D61D78A00488C38 /* Configuration.m in Sources */,
 				466D59521D61948600488C38 /* HttpResult.m in Sources */,
 				4637FCB51D5DAB9F002E6278 /* main.m in Sources */,

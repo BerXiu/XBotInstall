@@ -19,4 +19,9 @@
  *  请求集成列表
  */
 + (void)x_getRequestIntegrationsIDs:(NSString *)ids last:(NSInteger)last Target:(id)target callBack:(SEL)callBack;
+
+/**
+ *  请求commit列表
+ */
++ (void)x_getRequestCommitIDs:(NSString *)ids target:(id)target callBack:(SEL)callBack;
 @end
