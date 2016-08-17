@@ -76,7 +76,7 @@
 /// 应用版本
 @property (nonatomic, readonly) NSString * CFBundleShortVersionString;
 
-/// 应用最低支持系统版本
+/// 应用最低系统版本支持
 @property (nonatomic, readonly) NSString * MinimumOSVersion;
 
 /// 应用build号

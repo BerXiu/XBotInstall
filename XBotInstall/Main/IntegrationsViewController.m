@@ -14,7 +14,7 @@
 #import "IntegrationsInfo.h"
 #import <NSObjectExtend/NSDate+extend.h>
 
-@interface IntegrationsViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface IntegrationsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -63,13 +63,14 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    IntegrationsResultsInfo *integrationsResultsInfo =self.info.results[indexPath.section];
+    IntegrationsResultsInfo *integrationsResultsInfo = self.info.results[indexPath.section];
     InfoDictionaryInfo * infoDictionary = integrationsResultsInfo.assets.product.infoDictionary;
     
     switch (indexPath.row) {
         case 0:{
+            
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NameCell"];
-            cell.textLabel.text = [NSString stringWithFormat:@"%@-%@-build(%@)",infoDictionary.CFBundleDisplayName,infoDictionary.CFBundleShortVersionString,infoDictionary.CFBundleVersion];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@",infoDictionary.CFBundleDisplayName];
             
             NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
             formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
@@ -79,7 +80,9 @@
         }
             break;
         case 1:{
+            
             DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell"];
+            [cell info:integrationsResultsInfo];
             return cell;
         }
             
@@ -91,11 +94,13 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return indexPath.row == 0 ? 44: 100;
+
+    return indexPath.row == 0 ? 44: 84;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
     
 }
 

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IntegrationsInfo.h"
 
 @interface DetailCell : UITableViewCell
+
+@property (nonatomic , strong) IntegrationsResultsInfo *integrationsResultsInfo;
+
+- (void)info:(IntegrationsResultsInfo *)info;
 
 @end
