@@ -1,5 +1,5 @@
 //
-//  InstallerViewController.h
+//  InstallerTableViewController.h
 //  XBotInstall
 //
 //  Created by Xiu on 17/8/16.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "IntegrationsInfo.h"
 
-@interface InstallerViewController : UIViewController
+@interface InstallerTableViewController : UITableViewController
 
 @property (nonatomic, strong)IntegrationsResultsInfo *integrationsResultsInfo;
 

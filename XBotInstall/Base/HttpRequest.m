@@ -22,27 +22,52 @@
     return request;
 }
 
-
-
-
 + (void)requestWithPath:(NSString *)path target:(id)target callBack:(SEL)callBack {
+
+    [HttpRequest urlRequestWithPath:path savePaht:nil target:target callBack:callBack];
+}
+
++ (void)downloadWithPath:(NSString *)path savePath:(NSString *)savePath target:(id)target callBack:(SEL)callBack {
+    
+    [HttpRequest urlRequestWithPath:path savePaht:savePath target:target callBack:callBack];
+}
+
++ (void)urlRequestWithPath:(NSString *)path savePaht:(NSString *)savePath target:(id)target callBack:(SEL)callBack {
+    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManagerExtend *manager = [[AFURLSessionManagerExtend alloc]initWithSessionConfiguration:configuration];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:path]];
     
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    if (!savePath) { //数据请求
+        NSURLSessionDataTask * dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            
+            HttpResult * result = [HttpResult createWithResult:responseObject message:@"获取数据成功" code:200];
+            
+            [[HttpRequest shared]callBackTarget:target selector:callBack result:result];
+        }];
+        [dataTask resume];
         
-        HttpResult *result = [HttpResult createWithResult:responseObject message:@"获取数据成功" code:200];
+    }else { /// 下载文件
         
-        [[HttpRequest shared]callBackTarget:target selector:callBack result:result];
-    }];
-    [dataTask resume];
-    
+        NSURLSessionDownloadTask * downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+            NSLog(@"1%@",downloadProgress);
+            
+        } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+            NSLog(@"2%@",targetPath);
+            NSLog(@"3%@",response);
+            NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+            return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+            
+        } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+            NSLog(@"4%@",response);
+            NSLog(@"5%@",filePath);
+            NSLog(@"6%@",error);
+        }];
+        [downloadTask resume];
+    }
 }
-+ (void)x_getRequestWithTarget:(id)target callBack:(SEL)callBack {
 
-}
 
 - (void)callBackTarget:(id)target selector:(SEL)selector result:(HttpResult *)result
 {

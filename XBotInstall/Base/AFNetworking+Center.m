@@ -19,11 +19,21 @@
 }
 
 + (void)x_getRequestIntegrationsIDs:(NSString *)ids last:(NSInteger)last Target:(id)target callBack:(SEL)callBack {
+    
     [HttpRequest requestWithPath:[NSString stringWithFormat:@"%@/bots/%@/integrations?last=%ld", BotsAPIHost, ids, last] target:target callBack:callBack];
 }
 
 + (void)x_getRequestCommitIDs:(NSString *)ids target:(id)target callBack:(SEL)callBack {
+    
     [HttpRequest requestWithPath:[NSString stringWithFormat:@"%@/integrations/%@/commits", BotsAPIHost,ids] target:target callBack:callBack];
+}
+
+/**
+ *  下载api文件
+ */
++ (void)x_downloadWithPath:(NSString *)path savePath:(NSString *)savePath target:(id)target callBack:(SEL)callBack {
+    
+    [HttpRequest downloadWithPath:path savePath:savePath target:target callBack:callBack];
 }
 
 @end

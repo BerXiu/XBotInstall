@@ -10,6 +10,14 @@
 
 @interface HttpRequest : NSObject
 
+/**
+ *  网路请求
+ */
 + (void)requestWithPath:(NSString *)path target:(id)target callBack:(SEL)callBack;
 
+
+/**
+ *  文件下载
+ */
++ (void)downloadWithPath:(NSString *)path savePath:(NSString *)savePath target:(id)target callBack:(SEL)callBack;
 @end

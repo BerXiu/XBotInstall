@@ -38,13 +38,13 @@
 }
 
 - (void)info:(HttpResult *)result {
+    
     if (result.isSuccess) {
         self.info = [BotInfo objectWithDictionary:result.result];
         [self HUDdismiss];
         [self.tableView reloadData];
         return ;
     }
-    
     [self HUDshowErrorWithStatus:result.message];
 }
 

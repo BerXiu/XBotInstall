@@ -10,8 +10,31 @@
 
 @implementation CommitsInfo
 
--(void)setKey:(NSString *)key {
-    NSLog(@"%@",key);
+- (void)info:(NSDictionary *)info {
+    NSDictionary *results = ((NSArray *)info[@"results"]).lastObject;
+    NSMutableArray *array = [NSMutableArray new];
+    NSString * key = [results[@"commits"] allKeys].lastObject;
+    if (key) {
+        for (NSDictionary *dic in results[@"commits"][key]) {
+            CommitInfo *info = [CommitInfo objectWithDictionary:dic];
+            [array addObject:info];
+        }
+        _commitInfo = [NSArray arrayWithArray:array];
+        return;
+    }
+    NSLog(@"CommitsInfo解析失败");
 }
+
+@end
+
+
+
+@implementation CommitInfo
+
+@end
+
+
+
+@implementation XCSCommitContributorInfo
 
 @end

@@ -12,8 +12,8 @@
 #import "AFNetworking+Center.h"
 #import "HttpResult.h"
 #import "IntegrationsInfo.h"
-#import <NSObjectExtend/NSDate+extend.h>
-#import "InstallerViewController.h"
+#import "InstallerTableViewController.h"
+#import "NSString+Extend.h"
 
 @interface IntegrationsViewController ()
 
@@ -66,11 +66,7 @@
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NameCell"];
             cell.textLabel.text = [NSString stringWithFormat:@"%@",infoDictionary.CFBundleDisplayName];
-            
-            NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
-            formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
-            NSDate *date = [formatter dateFromString:integrationsResultsInfo.endedTime];
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",date.toString];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",[integrationsResultsInfo.endedTime dateStringtoString] ];
             return cell;
         }
             break;
@@ -105,7 +101,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    InstallerViewController *vc = segue.destinationViewController;
+    InstallerTableViewController *vc = segue.destinationViewController;
     if (vc) {
         vc.integrationsResultsInfo = sender;;
     }
