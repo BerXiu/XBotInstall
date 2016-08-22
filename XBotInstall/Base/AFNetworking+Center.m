@@ -28,9 +28,6 @@
     [HttpRequest requestWithPath:[NSString stringWithFormat:@"%@/integrations/%@/commits", BotsAPIHost,ids] target:target callBack:callBack];
 }
 
-/**
- *  下载api文件
- */
 + (void)x_downloadWithPath:(NSString *)path savePath:(NSString *)savePath target:(id)target callBack:(SEL)callBack {
     
     [HttpRequest downloadWithPath:[NSString stringWithFormat:@"%@/assets/%@",BotsAPIHost,path] savePath:savePath target:target callBack:callBack];

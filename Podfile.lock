@@ -28,6 +28,7 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.3.0):
     - CocoaLumberjack/Default
+  - HappyDNS (0.3.10)
   - NSObjectExtend (1.8.1):
     - NSObjectExtend/All (= 1.8.1)
   - NSObjectExtend/All (1.8.1):
@@ -39,6 +40,9 @@ PODS:
     - NSObjectExtend/Core
   - NSObjectExtend/UIKit (1.8.1):
     - NSObjectExtend/Core
+  - Qiniu (7.1.0.1):
+    - AFNetworking (~> 3)
+    - HappyDNS (~> 0.3)
   - RoutingHTTPServer (1.0.0):
     - CocoaHTTPServer (~> 2.3)
   - SSObject (1.4.4)
@@ -47,6 +51,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - NSObjectExtend
+  - Qiniu
   - RoutingHTTPServer
   - SSObject (= 1.4.4)
   - SVProgressHUD
@@ -56,7 +61,9 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 3baeb1ddd969f81cf9fca81053ae49ef2d1cbbfa
   CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530
   CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
+  HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   NSObjectExtend: cf77da3b288c26bd695584bada8f891e0cddad18
+  Qiniu: 0e92ff0d1b9afbc55275306671284e4ebeb08d03
   RoutingHTTPServer: fab8b13e725f26720500c146d43c98c11ebc4d47
   SSObject: b0ca2da20f0a1526db7e2199ac91cd0eed977391
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4

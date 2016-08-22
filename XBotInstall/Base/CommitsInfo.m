@@ -13,6 +13,8 @@
 - (void)info:(NSDictionary *)info {
     NSDictionary *results = ((NSArray *)info[@"results"]).lastObject;
     NSMutableArray *array = [NSMutableArray new];
+    if (((NSArray *)info[@"results"]).count <= 0) return ;
+    
     NSString * key = [results[@"commits"] allKeys].lastObject;
     if (key) {
         for (NSDictionary *dic in results[@"commits"][key]) {

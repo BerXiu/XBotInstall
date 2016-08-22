@@ -13,7 +13,8 @@
 #import "UIViewController+HUD.h"
 #import "CommitCell.h"
 #import <RoutingHTTPServer.h>
-#import <RoutingHTTPServer.h>
+#import <QiniuSDK.h>
+#import "Configuration.h"
 
 @interface InstallerTableViewController ()
 
@@ -27,6 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+////       [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-services://?action=download-manifest&url=https://o9h7vfmdk.qnssl.com/iAuto360.ipa__cn.iauto360__5.1_241"]];
+//    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/502088292/PlistFile/master/Install.plist"]];
     self.tableView.estimatedRowHeight = 71;
     self.title = @"Commit";
     [self refresh];
@@ -59,8 +62,7 @@
     self.httpServer = [[RoutingHTTPServer alloc] init];
     [self.httpServer setType:@"_http._tcp."];   //设置支持的协议
     [self.httpServer setPort:12345];    //设置端口号
-    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    [self.httpServer setDocumentRoot:documentsDirectory];   //设置root路径
+    [self.httpServer setDocumentRoot:[self documentPath]];   //设置root路径
     
     if (self.httpServer.isRunning) [self.httpServer stop];
     
@@ -88,6 +90,50 @@
 
 -(void)downloadInfo:(HttpResult *)result {
     
+    if (result.isSuccess) {
+        
+        /// 生成Plist文件并且上传
+        NSString *plistPath = [NSString stringWithFormat:@"%@/install.plist",[self documentPath]];
+        NSFileManager *filemanager = [NSFileManager defaultManager];
+        [filemanager createFileAtPath:plistPath contents:nil attributes:nil];
+        
+        /// 创建信息写入Plist文件
+        
+        NSArray * assets = @[@{@"kind":@"software-package",@"url":[NSString stringWithFormat:@"http://127.0.0.1:12345/%lu.ipa",self.integrationsResultsInfo.assets.product.relativePath.hash]}];
+        NSDictionary * metadata = @{
+                                    @"bundle-identifier":self.integrationsResultsInfo.assets.product.infoDictionary.CFBundleIdentifier,
+                                    @"bundle-version":
+                                        self.integrationsResultsInfo.assets.product.infoDictionary.CFBundleShortVersionString,
+                                    @"kind":@"software",
+                                    @"title":@"b"};
+        NSDictionary * item0 = @{@"assets":assets,@"metadata":metadata};
+        NSDictionary * items = @{@"items": @[item0]};
+        [items writeToFile:plistPath atomically:true];
+        
+        //通过七牛对象存储 存放Plist文件
+        QNUploadManager * upManager = [[QNUploadManager alloc]init];
+        QNUploadOption * upOption = [[QNUploadOption alloc]initWithMime:@"text/plain" progressHandler:nil params:nil checkCrc:true cancellationSignal:nil];
+        NSData * plistData = [NSData dataWithContentsOfFile:plistPath];
+        
+        if (plistData) {
+            NSString * key = [NSString stringWithFormat:@"%@_1_%@__%@_%@",self.integrationsResultsInfo.assets.product.fileName,self.integrationsResultsInfo.assets.product.infoDictionary.CFBundleIdentifier, self.integrationsResultsInfo.assets.product.infoDictionary.CFBundleShortVersionString,self.integrationsResultsInfo.assets.product.infoDictionary.CFBundleVersion];
+            
+            [upManager putData:plistData key:key token:QiNiuToken complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+                
+                if (info.statusCode == 200 || info.statusCode == 614) {
+                    ///开始安装
+                    NSLog(@"开始安装");
+                    NSLog(@"%@",[self documentPath]);
+
+                    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=https://o9h7vfmdk.qnssl.com/%@",key]]];
+                }else {
+                    [self HUDshowErrorWithStatus:[NSString stringWithFormat:@"Error starting QiNiu : %d",info.statusCode]];
+                }
+                
+            } option:upOption];
+        }
+        
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -103,49 +149,9 @@
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(NSString *)documentPath {
+    
+    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

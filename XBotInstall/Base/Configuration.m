@@ -11,6 +11,17 @@
 /// 获取Bot列表
 NSString * const BotsAPIHost = @"https://xiu-mac.local:20343/api";
 
+/// 七牛上传凭证
+NSString * const QiNiuToken = @"RqFMzdhP0DW4tdZ8ORQ1F3NgkVMWyEEiv1TUBA7g:VEi8bGCsJfgTb3QHB7_peIFsT_4=:eyJzY29wZSI6InBsaXN0IiwiZGVhZGxpbmUiOjE1MDMwODg5NTR9";
+
+@interface Configuration()
+
+
+@end
+
 @implementation Configuration
+
+
+
 
 @end

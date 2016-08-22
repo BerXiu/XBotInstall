@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '2F37D9C5FA3BA2D75918CA4F'
+               BlueprintIdentifier = '9F8F67760A4644E701C49E65'
                BlueprintName = 'RoutingHTTPServer'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libRoutingHTTPServer.a'>

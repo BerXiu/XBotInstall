@@ -48,7 +48,13 @@
                             <constraint firstAttribute="trailing" secondItem="lwz-Nx-Qxo" secondAttribute="trailing" id="eyJ-sX-QWx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bui-Iu-4op"/>
+                    <navigationItem key="navigationItem" id="bui-Iu-4op">
+                        <barButtonItem key="rightBarButtonItem" title="Cache" id="mnv-fQ-uPZ">
+                            <connections>
+                                <action selector="cacheClick:" destination="BYZ-38-t0r" id="lqJ-eQ-jeY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="lwz-Nx-Qxo" id="Nji-YE-zgf"/>
                     </connections>

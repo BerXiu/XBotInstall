@@ -24,12 +24,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HappyDNS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>NSObjectExtend.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-XBotInstall.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Qiniu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -57,7 +67,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>23082662E3465A2D7871C4A21DC4A96A</key>
+		<key>1CE97D6EF63667E53E3C43583E2121D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5B7837BC6C588AE3D5B69F69027ADFD3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>62DAAD739E57EEF01F46DE61B03E893B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>778160A1001847929D2D1099DB581E86</key>
+		<key>8239C8E0DBF6EE4F97D343234B834286</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,17 +97,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A240F357F592C3346027044983B8CFFD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B32BCE8088319B63DCD6BA8488784966</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F48844CCD155210F7AFA31C2329BB621</key>
+		<key>B7B57C2814CB532B528CF21BE244C37D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F65101A3604EC37B6912F827F18044EB</key>
+		<key>D0EA7BD0DF7B64D1D22AE99C93B3613D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

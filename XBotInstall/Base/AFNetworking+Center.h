@@ -29,4 +29,5 @@
  *  下载api文件
  */
 + (void)x_downloadWithPath:(NSString *)path savePath:(NSString *)savePath target:(id)target callBack:(SEL)callBack;
+
 @end

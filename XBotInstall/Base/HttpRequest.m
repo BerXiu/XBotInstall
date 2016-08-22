@@ -61,10 +61,12 @@
             
         } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
             if (!error) {
+                HttpResult * result = [HttpResult createWithResult:response message:@"下载成功" code:200];
                 
+                [[HttpRequest shared]callBackTarget:target selector:callBack result:result];
             }
             [SVProgressHUD dismiss];
-            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/BerXiu/PlistFile/master/bots.plist"]];
+            
         }];
         [downloadTask resume];
     }

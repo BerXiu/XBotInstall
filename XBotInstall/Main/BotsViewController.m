@@ -48,7 +48,9 @@
     [self HUDshowErrorWithStatus:result.message];
 }
 
-
+- (IBAction)cacheClick:(UIBarButtonItem *)sender {
+    
+}
 
 #pragma mark -Navigation
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
