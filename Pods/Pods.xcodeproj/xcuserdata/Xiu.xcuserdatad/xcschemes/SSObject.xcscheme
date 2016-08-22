@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8E1BF41AA1BB6BEBECF4F6B9'
+               BlueprintIdentifier = '89D43D95AA531B19B843B5C8'
                BlueprintName = 'SSObject'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libSSObject.a'>

@@ -14,6 +14,20 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - CocoaAsyncSocket (7.5.0):
+    - CocoaAsyncSocket/GCD (= 7.5.0)
+  - CocoaAsyncSocket/GCD (7.5.0)
+  - CocoaHTTPServer (2.3):
+    - CocoaAsyncSocket
+    - CocoaLumberjack
+  - CocoaLumberjack (2.3.0):
+    - CocoaLumberjack/Default (= 2.3.0)
+    - CocoaLumberjack/Extensions (= 2.3.0)
+  - CocoaLumberjack/Core (2.3.0)
+  - CocoaLumberjack/Default (2.3.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.3.0):
+    - CocoaLumberjack/Default
   - NSObjectExtend (1.8.1):
     - NSObjectExtend/All (= 1.8.1)
   - NSObjectExtend/All (1.8.1):
@@ -25,21 +39,25 @@ PODS:
     - NSObjectExtend/Core
   - NSObjectExtend/UIKit (1.8.1):
     - NSObjectExtend/Core
-  - pop (1.0.9)
+  - RoutingHTTPServer (1.0.0):
+    - CocoaHTTPServer (~> 2.3)
   - SSObject (1.4.4)
   - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
   - AFNetworking
   - NSObjectExtend
-  - pop
+  - RoutingHTTPServer
   - SSObject (= 1.4.4)
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CocoaAsyncSocket: 3baeb1ddd969f81cf9fca81053ae49ef2d1cbbfa
+  CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530
+  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
   NSObjectExtend: cf77da3b288c26bd695584bada8f891e0cddad18
-  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  RoutingHTTPServer: fab8b13e725f26720500c146d43c98c11ebc4d47
   SSObject: b0ca2da20f0a1526db7e2199ac91cd0eed977391
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 

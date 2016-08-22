@@ -33,7 +33,7 @@
  */
 + (void)x_downloadWithPath:(NSString *)path savePath:(NSString *)savePath target:(id)target callBack:(SEL)callBack {
     
-    [HttpRequest downloadWithPath:path savePath:savePath target:target callBack:callBack];
+    [HttpRequest downloadWithPath:[NSString stringWithFormat:@"%@/assets/%@",BotsAPIHost,path] savePath:savePath target:target callBack:callBack];
 }
 
 @end

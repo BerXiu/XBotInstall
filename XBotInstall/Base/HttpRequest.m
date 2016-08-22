@@ -10,6 +10,7 @@
 #import "Configuration.h"
 #import "AFURLSessionManagerExtend.h"
 #import "HttpResult.h"
+#import <SVProgressHUD.h>
 
 @implementation HttpRequest
 
@@ -36,8 +37,9 @@
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManagerExtend *manager = [[AFURLSessionManagerExtend alloc]initWithSessionConfiguration:configuration];
+    NSString *strPaht = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:path]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:strPaht]];
     
     if (!savePath) { //数据请求
         NSURLSessionDataTask * dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
@@ -49,20 +51,20 @@
         [dataTask resume];
         
     }else { /// 下载文件
-        
         NSURLSessionDownloadTask * downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
-            NSLog(@"1%@",downloadProgress);
+
+            [SVProgressHUD showProgress:downloadProgress.fractionCompleted status:[NSString stringWithFormat:@"%0.2f%%",downloadProgress.fractionCompleted * 100]];
             
         } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-            NSLog(@"2%@",targetPath);
-            NSLog(@"3%@",response);
-            NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-            return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+
+            return [[NSURL alloc]initWithString:savePath];
             
         } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-            NSLog(@"4%@",response);
-            NSLog(@"5%@",filePath);
-            NSLog(@"6%@",error);
+            if (!error) {
+                
+            }
+            [SVProgressHUD dismiss];
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/BerXiu/PlistFile/master/bots.plist"]];
         }];
         [downloadTask resume];
     }

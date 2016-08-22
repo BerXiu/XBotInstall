@@ -12,11 +12,14 @@
 #import "CommitsInfo.h"
 #import "UIViewController+HUD.h"
 #import "CommitCell.h"
-
+#import <RoutingHTTPServer.h>
+#import <RoutingHTTPServer.h>
 
 @interface InstallerTableViewController ()
 
 @property (nonatomic, strong) CommitsInfo *infoItems;
+
+@property (nonatomic, strong) RoutingHTTPServer * httpServer;
 
 @end
 
@@ -44,9 +47,48 @@
         [self HUDdismiss];
     }
 }
+
 - (IBAction)sender:(UIBarButtonItem *)sender {
+    [self HUDshow];
+    [self startServer];
 }
 
+//开启httpServer服务
+- (void)startServer
+{
+    self.httpServer = [[RoutingHTTPServer alloc] init];
+    [self.httpServer setType:@"_http._tcp."];   //设置支持的协议
+    [self.httpServer setPort:12345];    //设置端口号
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    [self.httpServer setDocumentRoot:documentsDirectory];   //设置root路径
+    
+    if (self.httpServer.isRunning) [self.httpServer stop];
+    
+    NSError *error;
+    if([self.httpServer start:&error])
+    {
+        NSLog(@"Started HTTP Server on port %hu", [_httpServer listeningPort]);
+        [self HUDdismiss];
+        
+        /// 服务开启成功下开始下载安装
+        [self downloadHttpRequest];
+    }
+    else
+    {
+        [self HUDsetStatus:[NSString stringWithFormat:@"Error starting HTTP Sever: %@",error]];
+        // Probably should add an escape - but in practice never loops more than twice (bug filed on GitHub https://github
+        [self startServer];
+    }
+}
+
+- (void)downloadHttpRequest {
+    NSURL *saveURL = [[NSFileManager defaultManager]URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
+    [AFNetworking_Center x_downloadWithPath:self.integrationsResultsInfo.assets.product.relativePath savePath:[NSString stringWithFormat:@"%@%lu.ipa",saveURL,self.integrationsResultsInfo.assets.product.relativePath.hash] target:self callBack:@selector(downloadInfo:)];
+}
+
+-(void)downloadInfo:(HttpResult *)result {
+    
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
