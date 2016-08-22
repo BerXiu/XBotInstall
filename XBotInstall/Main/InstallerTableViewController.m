@@ -28,10 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-////       [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-services://?action=download-manifest&url=https://o9h7vfmdk.qnssl.com/iAuto360.ipa__cn.iauto360__5.1_241"]];
-//    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/502088292/PlistFile/master/Install.plist"]];
     self.tableView.estimatedRowHeight = 71;
     self.title = @"Commit";
+    
     [self refresh];
 }
 
@@ -61,7 +60,7 @@
 {
     self.httpServer = [[RoutingHTTPServer alloc] init];
     [self.httpServer setType:@"_http._tcp."];   //设置支持的协议
-    [self.httpServer setPort:12345];    //设置端口号
+    [self.httpServer setPort:9527];    //设置端口号
     [self.httpServer setDocumentRoot:[self documentPath]];   //设置root路径
     
     if (self.httpServer.isRunning) [self.httpServer stop];
@@ -98,14 +97,13 @@
         [filemanager createFileAtPath:plistPath contents:nil attributes:nil];
         
         /// 创建信息写入Plist文件
-        
-        NSArray * assets = @[@{@"kind":@"software-package",@"url":[NSString stringWithFormat:@"http://127.0.0.1:12345/%lu.ipa",self.integrationsResultsInfo.assets.product.relativePath.hash]}];
+        NSArray * assets = @[@{@"kind":@"software-package",@"url":[NSString stringWithFormat:@"http://127.0.0.1:9527/%lu.ipa",self.integrationsResultsInfo.assets.product.relativePath.hash]}];
         NSDictionary * metadata = @{
                                     @"bundle-identifier":self.integrationsResultsInfo.assets.product.infoDictionary.CFBundleIdentifier,
                                     @"bundle-version":
                                         self.integrationsResultsInfo.assets.product.infoDictionary.CFBundleShortVersionString,
                                     @"kind":@"software",
-                                    @"title":@"b"};
+                                    @"title":self.integrationsResultsInfo.assets.product.infoDictionary.CFBundleDisplayName};
         NSDictionary * item0 = @{@"assets":assets,@"metadata":metadata};
         NSDictionary * items = @{@"items": @[item0]};
         [items writeToFile:plistPath atomically:true];
@@ -122,9 +120,6 @@
                 
                 if (info.statusCode == 200 || info.statusCode == 614) {
                     ///开始安装
-                    NSLog(@"开始安装");
-                    NSLog(@"%@",[self documentPath]);
-
                     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=https://o9h7vfmdk.qnssl.com/%@",key]]];
                 }else {
                     [self HUDshowErrorWithStatus:[NSString stringWithFormat:@"Error starting QiNiu : %d",info.statusCode]];

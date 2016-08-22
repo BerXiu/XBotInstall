@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5BA04D6D532BA6A9A1144CB8'
+               BlueprintIdentifier = 'C58055CD7A58E717ACDB0B74'
                BlueprintName = 'NSObjectExtend'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libNSObjectExtend.a'>

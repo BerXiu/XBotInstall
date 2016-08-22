@@ -58,6 +58,7 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "NSObjectExtend/Classes/Core/Resource/Base.lproj"
   install_resource "NSObjectExtend/Classes/Core/Resource/en.lproj"
   install_resource "NSObjectExtend/Classes/Core/Resource/zh-Hans.lproj"
@@ -65,6 +66,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "NSObjectExtend/Classes/Core/Resource/Base.lproj"
   install_resource "NSObjectExtend/Classes/Core/Resource/en.lproj"
   install_resource "NSObjectExtend/Classes/Core/Resource/zh-Hans.lproj"

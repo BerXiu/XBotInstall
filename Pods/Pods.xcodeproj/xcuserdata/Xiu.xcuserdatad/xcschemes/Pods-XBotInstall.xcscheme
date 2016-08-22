@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BE7538D5360D85AFB98C3A33'
+               BlueprintIdentifier = 'EF102CDB8E997F8E30CD7476'
                BlueprintName = 'Pods-XBotInstall'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-XBotInstall.a'>
