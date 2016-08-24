@@ -14,6 +14,9 @@ FOUNDATION_EXPORT NSString * const BotsAPIHost;
 /// 七牛上传凭证
 FOUNDATION_EXPORT NSString * const QiNiuToken;
 
+/// Plist存储地址
+FOUNDATION_EXPORT NSString * const PlistPath;
+
 @interface Configuration : NSObject
 
 @end

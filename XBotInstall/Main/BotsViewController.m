@@ -10,10 +10,13 @@
 #import "HttpRequest.h"
 #import "HttpResult.h"
 #import "BotInfo.h"
-#import "UIViewController+HUD.h"
+#import <SVProgressHUD.h>
 #import "BotCell.h"
 #import "AFNetworking+Center.h"
 #import "IntegrationsViewController.h"
+#import <MJRefresh.h>
+#import "EventCenter.h"
+#import <BlocksKit/UIAlertView+BlocksKit.h>
 
 
 @interface BotsViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -28,28 +31,43 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Bots";
     [self refresh];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)refresh {
-    [self HUDshow];
-    [AFNetworking_Center x_getRequestBotsWithTarget:self callBack:@selector(info:)];
+    
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [AFNetworking_Center x_getRequestBotsWithTarget:self callBack:@selector(info:)];
+
+    }];
 }
 
 - (void)info:(HttpResult *)result {
     
     if (result.isSuccess) {
         self.info = [BotInfo objectWithDictionary:result.result];
-        [self HUDdismiss];
         [self.tableView reloadData];
-        return ;
     }
-    [self HUDshowErrorWithStatus:result.message];
+    [self.tableView.mj_header endRefreshing];
 }
 
 - (IBAction)cacheClick:(UIBarButtonItem *)sender {
     
+    [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"确定要清除所有已经下载的安装文件吗？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+       
+        if (buttonIndex == 1) {
+            NSFileManager *fileMgr = [NSFileManager defaultManager];
+            BOOL bRet = [fileMgr fileExistsAtPath:[[EventCenter shared]documentPath]];
+            if (bRet) {
+                //
+                NSError *err;
+                [fileMgr removeItemAtPath:[NSString stringWithFormat:@"%@/ipas",[[EventCenter shared]documentPath]] error:&err];
+                
+            }
+        }
+    }];
 }
 
 #pragma mark -Navigation

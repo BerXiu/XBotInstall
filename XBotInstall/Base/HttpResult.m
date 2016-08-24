@@ -7,6 +7,7 @@
 //
 
 #import "HttpResult.h"
+#import <SVProgressHUD.h>
 
 @implementation HttpResult
 
@@ -17,6 +18,11 @@
     info->_result = result;
     info->_message = message;
     info->_code = code;
+    
+    if (code != 200) {
+        [SVProgressHUD showErrorWithStatus:message];
+    }
+    
     return info;
 }
 

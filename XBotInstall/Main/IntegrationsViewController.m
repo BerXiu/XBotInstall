@@ -8,12 +8,13 @@
 
 #import "IntegrationsViewController.h"
 #import "DetailCell.h"
-#import "UIViewController+HUD.h"
+#import <SVProgressHUD.h>
 #import "AFNetworking+Center.h"
 #import "HttpResult.h"
 #import "IntegrationsInfo.h"
 #import "InstallerTableViewController.h"
 #import "NSString+Extend.h"
+#import <MJRefresh.h>
 
 @interface IntegrationsViewController ()
 
@@ -27,26 +28,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.title = @"Integrations";
+
     [self refresh];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)refresh {
     
-    [self HUDshow];
-    [AFNetworking_Center x_getRequestIntegrationsIDs:self.integrations._id last:1000 Target:self callBack:@selector(result:)];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [AFNetworking_Center x_getRequestIntegrationsIDs:self.integrations._id last:1000 Target:self callBack:@selector(result:)];
+    }];
 }
 
 - (void)result:(HttpResult *)result {
+    
     if (result.isSuccess) {
         
         self.info = [IntegrationsInfo objectWithDictionary:result.result];
         [self.tableView reloadData];
     }
-    [self HUDdismiss];
-
-    
+    [self.tableView.mj_header endRefreshing];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

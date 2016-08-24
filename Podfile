@@ -11,5 +11,6 @@ pod 'SSObject', '1.4.4'     # 对象序列化
 pod 'NSObjectExtend'        # NS系列类添加常用方法
 pod 'RoutingHTTPServer'     # HttpServer
 pod 'MJRefresh'             # 上拉刷新，下拉加载
+pod 'BlocksKit'             # The Objective-C block utilities you always wish you had.
 
 end 

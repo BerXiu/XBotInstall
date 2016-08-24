@@ -19,5 +19,5 @@
 /**
  *  文件下载
  */
-+ (void)downloadWithPath:(NSString *)path savePath:(NSString *)savePath target:(id)target callBack:(SEL)callBack;
++ (void)downloadWithPath:(NSString *)path savePath:(NSURL *)saveURL target:(id)target callBack:(SEL)callBack;
 @end
