@@ -1,6 +1,6 @@
 # XBotInstall
 
-###BotsInstall
+###XBotsInstall
 
 ###Xcode-Sever-Bots 测试安装工具
 
