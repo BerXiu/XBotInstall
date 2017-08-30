@@ -83,7 +83,8 @@
                                 @"bundle-version":
                                     info.infoDictionary.CFBundleShortVersionString,
                                 @"kind":@"software",
-                                @"title":info.infoDictionary.CFBundleDisplayName};
+                                @"title":info.infoDictionary.CFBundleDisplayName != nil ? info.infoDictionary.CFBundleDisplayName: info.infoDictionary.CFBundleName
+                                };
     NSDictionary * item0 = @{@"assets":assets,@"metadata":metadata};
     NSDictionary * items = @{@"items": @[item0]};
     [items writeToFile:[self setPlistPath] atomically:true];

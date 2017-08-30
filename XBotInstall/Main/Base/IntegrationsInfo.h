@@ -85,6 +85,8 @@
 /// 应用名称
 @property (nonatomic, readonly) NSString * CFBundleDisplayName;
 
+@property (nonatomic, readonly) NSString * CFBundleName;
+
 /// 应用程序标识符
 @property (nonatomic, readonly) NSString * CFBundleIdentifier;
 

@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.estimatedRowHeight = 71;
+    self.tableView.estimatedRowHeight = 44;
     [self refresh];
     [self.tableView.mj_header beginRefreshing];
 }
@@ -83,8 +83,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CommitCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" ];
-    [cell info:self.infoItems.commitInfo[indexPath.row]];
+    [cell info: self.infoItems.commitInfo[indexPath.row]];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return 8.0;
 }
 
 

@@ -16,7 +16,7 @@
 #import "NSString+Extend.h"
 #import <MJRefresh.h>
 
-@interface IntegrationsViewController ()
+@interface IntegrationsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -43,7 +43,7 @@
 - (void)result:(HttpResult *)result {
     
     if (result.isSuccess) {
-        
+        NSLog(@"%@",result.result);
         self.info = [IntegrationsInfo objectWithDictionary:result.result];
         [self.tableView reloadData];
     }
@@ -66,7 +66,7 @@
         case 0:{
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NameCell"];
-            cell.textLabel.text = [NSString stringWithFormat:@"%@",infoDictionary.CFBundleDisplayName];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@",infoDictionary.CFBundleDisplayName != nil ? infoDictionary.CFBundleDisplayName: infoDictionary.CFBundleName];
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",[integrationsResultsInfo.endedTime dateStringtoString] ];
             return cell;
         }
@@ -85,9 +85,14 @@
     }
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return 8.0;
+}
 
-    return indexPath.row == 0 ? 44: 84;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return indexPath.row == 0 ? 44: 108;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -99,7 +104,6 @@
 
 
 #pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     InstallerTableViewController *vc = segue.destinationViewController;
