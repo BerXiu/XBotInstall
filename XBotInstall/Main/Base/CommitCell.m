@@ -10,12 +10,6 @@
 #import "NSString+Extend.h"
 @interface CommitCell()
 
-/// commit 提交人
-@property (weak, nonatomic) IBOutlet UILabel *name;
-
-/// commit 时间
-@property (weak, nonatomic) IBOutlet UILabel *date;
-
 /// commit 内容
 @property (weak, nonatomic) IBOutlet UILabel *details;
 
@@ -23,15 +17,9 @@
 
 @implementation CommitCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-
-}
 
 -(void)info:(CommitInfo *)info {
-    
-    self.name.text = [NSString stringWithFormat:@"提交人：%@",info.XCSCommitContributor.XCSContributorName];
-    self.date.text = [NSString stringWithFormat:@"时间：%@",info.XCSCommitTimestamp.dateStringtoString];
+
     self.details.text = [NSString stringWithFormat:@"%@",info.XCSCommitMessage];
 }
 

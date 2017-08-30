@@ -14,8 +14,9 @@
 #import "CommitCell.h"
 #import "EventCenter.h"
 #import <MJRefresh.h>
+#import "NSString+Extend.h"
 
-@interface InstallerTableViewController ()
+@interface InstallerTableViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) CommitsInfo *infoItems;
 
@@ -74,17 +75,31 @@
     }
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return self.infoItems.commitInfo.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.infoItems.commitInfo.count;
+    return 2;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    CommitCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" ];
-    [cell info: self.infoItems.commitInfo[indexPath.row]];
-    return cell;
+    if (indexPath.row == 0) {
+        
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NameCell"];
+        cell.textLabel.text = self.infoItems.commitInfo[indexPath.section].XCSCommitContributor.XCSContributorName;
+        cell.detailTextLabel.text = self.infoItems.commitInfo[indexPath.section].XCSCommitTimestamp.dateStringtoString;
+        return cell;
+    }else {
+     
+        CommitCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" ];
+        [cell info: self.infoItems.commitInfo[indexPath.section]];
+        return cell;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
